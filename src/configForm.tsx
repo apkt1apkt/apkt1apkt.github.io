@@ -32,10 +32,14 @@ export default function ConfigForm({ setFormData }: { setFormData: (values: Form
   }, []);
 
   useEffect(() => {
-    setValues((v) => ({
-      ...v,
-      weeklyRepayment: (1 + v.weeklyInterestRate / 100) * (v.disbursement / v.loanDuration),
-    }));
+    setValues((v) => {
+      const totalAmountOwn = v.disbursement + ((v.disbursement * v.weeklyInterestRate) / 100) * v.loanDuration;
+
+      return {
+        ...v,
+        weeklyRepayment: totalAmountOwn / v.loanDuration,
+      };
+    });
   }, [values.weeklyInterestRate, values.loanDuration, values.disbursement]);
 
   const onChange = (key: string) => (value: number | null) => {
