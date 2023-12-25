@@ -4,7 +4,7 @@ import { FormValues } from "./formTypes";
 
 export default function ConfigForm({ setFormData }: { setFormData: (values: FormValues | null) => void }) {
   const [values, setValues] = useState<FormValues>({
-    capital: 3000,
+    capital: 5000,
     stopProjectionAtWeek: 20,
     stopDisbursementAtWeek: 16,
     disbursement: 2000,
@@ -14,7 +14,8 @@ export default function ConfigForm({ setFormData }: { setFormData: (values: Form
     processingFee: 200,
     formFee: 50,
     gracePeriod: 1,
-    estimatedWeeklyExpenses: 200,
+    estimatedWeeklyExpenses: 100,
+    formExpand: 2,
   });
 
   useEffect(() => {
@@ -52,6 +53,15 @@ export default function ConfigForm({ setFormData }: { setFormData: (values: Form
 
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
+      <InputNumber
+        addonBefore="Expand Result By"
+        value={values.formExpand}
+        onChange={onChange("formExpand")}
+        min={0}
+        max={5}
+      />
+
+      <div style={{ marginTop: 30 }}></div>
       <InputNumber addonBefore="Capital" value={values.capital} onChange={onChange("capital")} step={1000} />
       <InputNumber
         addonBefore="Stop projection after week"

@@ -6,7 +6,13 @@ export default function FormJsonPresentation({ formData }: { formData: FormValue
   const data = useLoanProjection(formData);
   return (
     <div>
-      <ReactJson src={data || {}} name={false} displayDataTypes={false} displayObjectSize={false} collapsed={1} />
+      <ReactJson
+        src={data || {}}
+        name={false}
+        displayDataTypes={false}
+        displayObjectSize={false}
+        collapsed={formData.formExpand}
+      />
     </div>
   );
 }

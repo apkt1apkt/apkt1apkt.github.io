@@ -10,4 +10,5 @@ export type FormValues = {
   processingFee: number;
   formFee: number;
   estimatedWeeklyExpenses: number;
+  formExpand: number;
 };
