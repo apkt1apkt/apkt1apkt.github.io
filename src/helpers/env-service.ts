@@ -1,13 +1,9 @@
-import * as yup from 'yup';
-
-type envType = yup.InferType<typeof envSchema>;
-
-const env = import.meta.env;
+import * as yup from "yup";
 
 export const envService = {
-  serverUrl: env.VITE_APP_SERVER_URL,
-  googleClientId: env.VITE_APP_GOOGLE_ClIENT_ID,
-} as envType;
+  serverUrl: "http://localhost:9006/api",
+  googleClientId: "742142303917-aob02ke2a6qja9o8hjcmqhb5kek8aaft.apps.googleusercontent.com",
+};
 
 const envSchema = yup.object().shape({
   serverUrl: yup.string().required(),
